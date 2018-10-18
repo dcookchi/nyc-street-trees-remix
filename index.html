@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NYC Street Trees Remix</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <!-- <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <!-- Load Leaflet CSS -->
+    <link href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" rel="stylesheet">
+    <!-- Load Marker Cluster CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css" />
+    <!-- Mapbox GL -->
+    <link rel="stylesheet" href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css"/>
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="style.css">
+  </head>  
+  <body>
+    
+    <div class="sidebar">
+      <div class="sidebar-content">
+        <h1>
+          NYC Street Trees Remix: Lower Manhattan
+        </h1>
+        <p>
+          This web map primarily uses Leaflet for mapping functionality and interactivity, including the Marker Clusters plug-in and Mustache for popups. 
+          The base map was customized using Mapbox. 
+          Scrolling over a point (tree) highlights all trees of the same species. 
+          Pressing the "see census tracts" button loads polygons that correspond to census tract boundaries within this NTA.  
+          Counts of trees within these tracts are calculated in the browser using Turf.js. 
+        </p>
+      </div>
+      <div class="sidebar-content-popup">
+      </div>
+    </div>
+    
+    <div id="map"></div>
+    
+    <div class="overlay">
+      <button class="load-data-parks">
+         See census tracts shapes with tree counts
+       </button> 
+        <button class="load-data-trees">
+         Hide census tracts shapes
+        </button>
+       
+       <div class="sidebar-content"></div>
+    </div>
+      
+    <!--
+      This script element will not be displayed, it just holds our template
+    -->
+    <script class="popup-template" type="x-tmpl-mustache">
+      <div>
+        <h2><em>{{spc_latin}}</em></h2>
+        <div>common name: {{spc_common}}</div>
+        <div>health: {{health}}</div>
+        <div><a href="https://en.wikipedia.org/w/index.php?search={{spc_latin}}" target="_blank">see if it is on wikipedia</a></div>
+      </div>
+    </script>
+    
+    <script class="popup-template2" type="x-tmpl-mustache">
+      <div>
+        <div>NYC Borough Tract Code: {{boro_ct2010}}</div>
+        <div>{{treesCount}} trees</div>
+      </div>
+    </script>
+    
+
+    
+    <!-- Load Leaflet library -->
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
+    <!-- Load Promises polyfill -->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+    <!-- Load Fetch polyfill -->
+    <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.4/fetch.js"></script>
+    <!-- import the Mustache library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.min.js"></script>
+    <!-- import the Marker Cluster library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
+    <!-- Mapbox GL and Leaflet-Mapbox-GL plugin -->
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js"></script>
+    <script src="https://rawgit.com/mapbox/mapbox-gl-leaflet/master/leaflet-mapbox-gl.js"></script>
+    <!-- Load D3 -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.js"></script>
+    <!-- Load Turf -->
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js"></script>
+    <!-- import the webpage's javascript file -->
+    <script src="script.js" defer></script>
+  </body>
+</html>

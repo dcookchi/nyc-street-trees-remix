@@ -1,0 +1,49 @@
+/* CSS files add styling rules to your content */
+
+body {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  color: #dddddd;
+  font-size: 12px;
+}
+
+h1 {
+  color: #dddddd;
+}
+
+#map {
+  position: absolute;
+  height: 100vh;
+  float: left;
+  width: 80%;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 5px;
+  z-index: 10000;
+}
+
+.sidebar {
+  height: 100vh;
+  float: right;
+  width: 20%;
+  background-color: #444444;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.sidebar-content {
+  padding: 15px;
+}
+
+.sidebar-content-popup {
+  padding: 15px;
+  background-color: #eeeeee;
+}
