@@ -26,7 +26,7 @@ L.tileLayer(tileUrl, tileOpt).addTo(map);
 // carto light: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png'
 // carto dark: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png'
 
-var dataUrl = "https://data.cityofnewyork.us/resource/5rq2-4hqu.geojson?$where=nta_name like '%25Battery%25'";
+var dataUrl = "https://data.cityofnewyork.us/resource/5rq2-4hqu.geojson?$where=nta_name like '%25Battery%25'&$limit=2000";
 var getResp = (response) => response.json();
 // var getData = (data) => L.geoJson(data).addTo(map);
 
@@ -103,7 +103,7 @@ function loadTractCounts() {
         // Read data as JSON
         return response.json();
     });
-  var treesFetch = fetch("https://data.cityofnewyork.us/resource/5rq2-4hqu.geojson?$where=nta_name like '%25Battery%25'")
+  var treesFetch = fetch("https://data.cityofnewyork.us/resource/5rq2-4hqu.geojson?$where=nta_name like '%25Battery%25'&$limit=2000")
     .then(function (response) {
         // Read data as JSON
         return response.json();
